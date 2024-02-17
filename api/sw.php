@@ -1,10 +1,12 @@
 <?php
 include_once "db.php";
-$DB = new DB($_POST['table']);
-$row = $DB->find($_POST['id']);
+// echo json_encode($_POST);
+$DB = ${ucfirst($_POST['table'])};
+$now = $DB->find($_POST['id']);
 $sw = $DB->find($_POST['sw']);
-$tmp = $row['rank'];
-$row['rank'] = $sw['rank'];
-$sw['rank'] = $tmp;
-$DB->save($row);
+$tmp = $now['rank'];
+$now['rank']=$sw['rank'];
+$sw['rank']=$tmp;
+$DB->save($now);
 $DB->save($sw);
+?>

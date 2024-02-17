@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2024-01-11 04:19:17
--- 伺服器版本： 10.4.28-MariaDB
--- PHP 版本： 8.2.4
+-- 產生時間： 2024-02-08 03:28:38
+-- 伺服器版本： 10.4.32-MariaDB
+-- PHP 版本： 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `db20`
+-- 資料庫： `db2003`
 --
 
 -- --------------------------------------------------------
@@ -32,9 +32,18 @@ CREATE TABLE `poster` (
   `name` text NOT NULL,
   `img` text NOT NULL,
   `sh` int(1) NOT NULL,
-  `rank` int(10) NOT NULL,
+  `rank` int(10) UNSIGNED NOT NULL,
   `ani` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `poster`
+--
+
+INSERT INTO `poster` (`id`, `name`, `img`, `sh`, `rank`, `ani`) VALUES
+(1, '花物語', '03B03.png', 1, 1, 1),
+(2, '食神傳奇', '03B04.png', 1, 2, 2),
+(3, '餐桌傳奇', '03B07.png', 1, 3, 3);
 
 --
 -- 已傾印資料表的索引
@@ -54,7 +63,7 @@ ALTER TABLE `poster`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `poster`
 --
 ALTER TABLE `poster`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

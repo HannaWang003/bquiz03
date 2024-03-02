@@ -114,4 +114,13 @@ class DB
 }
 $Movie = new DB('movie');
 $Poster = new DB('poster');
-$Order = new DB('order');
+$Order = new DB('orders');
+
+//for bquiz03
+$sess = [
+"14:00-16:00",
+"16:00-18:00",
+"18:00-20:00",
+"20:00-22:00",
+"22:00-24:00"
+];

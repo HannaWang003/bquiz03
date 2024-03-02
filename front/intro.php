@@ -10,7 +10,7 @@ $level=[0,"普遍級","輔導級","保護級","限制級"];
         <video src="../img/<?=$row['trailer']?>" width="300px" height="250px" controls="" style="float:right;"></video>
         <font style="font-size:24px"> <img src="../img/<?=$row['poster']?>" width="200px" height="250px" style="margin:10px; float:left">
         <p style="margin:3px">影片名稱 ：<?=$row['name']?>
-          <input type="button" value="線上訂票" onclick="lof(&#39;?do=ord&amp;id=4&#39;)" style="margin-left:50px; padding:2px 4px" class="b2_btu">
+          <input type="button" value="線上訂票" onclick="location.href='?do=order&id=<?=$row['id']?>'" style="margin-left:50px; padding:2px 4px" class="b2_btu">
         </p>
         <p style="margin:3px">影片分級 ： <img src="../icon/03C0<?=$row['level']?>.png" style="display:inline-block;"><?=$level[$row['level']]?> </p>
         <p style="margin:3px">影片片長 ： <?=$row['length']?></p>

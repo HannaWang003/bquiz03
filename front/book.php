@@ -84,6 +84,7 @@ for($i=1;$i<=20;$i++){
             movie:'<?=$movie?>',
             date:'<?=$date?>',
             session:'<?=$sess?>',
+            qt:seats.length,
             seats},
             (no)=>{
                 // console.log(no);

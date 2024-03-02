@@ -3,6 +3,12 @@ include_once "../api/db.php";
 $movie=$Movie->find($_POST['movie'])['name'];
 $date=$_POST['date'];
 $sess=$_POST['sess'];
+$ords=$Order->all(['movie'=>$movie,'date'=>$date,'session'=>$sess]);
+$seats=[];
+foreach($ords as $ord){
+    $tmp=unserialize($ord['seats']);
+    $seats=array_merge($seats,$tmp);
+}
 ?>
 <style>
     .red{
@@ -44,9 +50,15 @@ for($i=1;$i<=20;$i++){
     echo (($i-1)%5+1)."號";
     echo "</div>";
     echo "<div class='ct'>";
-    echo "<img src='./icon/03D02.png'>";
+    if(in_array($i,$seats)){
+        echo "<img src='./icon/03D03.png'>";        
+    }else{
+        echo "<img src='./icon/03D02.png'>";
+    }
     echo "</div>";
-    echo "<input type='checkbox' name='chk' value='$i' class='chk'>";
+    if(!in_array($i,$seats)){
+        echo "<input type='checkbox' name='chk' value='$i' class='chk'>";
+    }
     echo "</div>";
 }
         ?>

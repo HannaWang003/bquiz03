@@ -21,7 +21,7 @@
     </tr>
     <tr>
         <td colspan='2' class='ct'>
-            <button onclick="$('#select').hide();$('#book').show()" id="bookBtn">確定</button>&nbsp;&nbsp;<input type="reset" value='重置'>
+            <button id="bookBtn">確定</button>&nbsp;&nbsp;<input type="reset" value='重置'>
         </td>
         <!-- <td></td> -->
     </tr>
@@ -67,6 +67,8 @@ $('#bookBtn').on('click',function(){
     let sess=$('#sess').val();
     $.post('./front/book.php',{movie,date,sess},function(res){
         $('#book').html(res)
+        $('#select').hide();
+        $('#book').show();
     })
 })
     </script>

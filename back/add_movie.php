@@ -12,7 +12,7 @@
         vertical-align:top;
     }
 </style>
-<form action="./api/add_movie.php" method="post" enctype="multipart/form-data">
+<form action="./api/edit_movie.php" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>影片資料</td>

@@ -41,9 +41,10 @@ foreach($rows as $row){
 </table>
 <script>
     function edit(id){
-$.post('./api/edit_movie.php',{id},function(res){
-location.reload();
-})
+        $.post('./back/edit_movie.php',{id},function(res){
+
+            $('#mmsub').html(res)
+        })
     }
     function del(elm,id){
         let now=$(elm);

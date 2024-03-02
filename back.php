@@ -35,7 +35,7 @@ if (!isset($_SESSION['mag'])) {
         <a href="?do=movie">院線片管理</a>|
         <a href="?do=order">電影訂票管理</a>
       </div>
-      <div class="rb tab">
+      <div class="rb tab" id="mmsub">
         <?php
         $do = ($_GET['do']) ?? "main";
         $file = "./back/{$do}.php";

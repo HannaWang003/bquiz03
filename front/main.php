@@ -1,15 +1,35 @@
 
+<style>
+    .lists{
+        text-align:center;
+    }
+    .item{
+        display:none;
+    }
+</style>
 <div class="half" style="vertical-align:top;">
     <h1>預告片介紹</h1>
     <div class="rb tab" style="width:95%;">
-        <div id="abgne-block-20111227">
-            <ul class="lists">
-            </ul>
-            <ul class="controls">
-            </ul>
-        </div>
+            <div class="lists">
+                <?php
+$posters=$Poster->all(['sh'=>1]," order by rank ");
+foreach($posters as $poster){
+    ?>
+<div class="item">
+    <div><img src="./img/<?=$poster['img']?>"></div>
+    <div><?=$poster['name']?></div>
+</div>
+<?php
+}
+?>
+            </div>
+            <div class="controls">
+</div>
     </div>
 </div>
+<script>
+    $(".item").eq(0).show();
+</script>
     <style>
         .movie{
             width:100%;

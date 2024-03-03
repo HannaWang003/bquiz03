@@ -82,9 +82,21 @@ foreach($posters as $idx=>$poster){
 </div>
 <script>
     $(".item").eq(0).show();
+//輪播程式
+let now=0;
+let timer = setInterval(()=>{slide()},1000);
+let all =$('.item').length;
+function slide(){
+    $('.item').hide();
+    now++;
+    if(now>all-1){
+        now=0
+    }
+    $('.item').eq(now).show()
+}
+    //左右移動程式
     let total=$('.btn').length;
     let p=0;
-    // console.log(total);
     $(".left,.right").on("click",function(){
         let arrow=$(this).attr('class');
         switch(arrow){

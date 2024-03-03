@@ -4,6 +4,7 @@
         text-align:center;
         width:430px;
         height:380px;
+        overflow:hidden;
     }
     .item{
         box-sizing:border-box;
@@ -85,30 +86,36 @@ foreach($posters as $idx=>$poster){
 </div>
 <script>
     $(".item").eq(0).show();
-    let total=$(".btn").length;
+    let poAll=$('.btn').length;
+    // console.log(total);
 //輪播程式
 let now=0;
-let timer = setInterval(()=>{slide()},3000);
-function slide(){
-    let ani=$(".item").eq(now).data("ani");
-    let next=now+1;
-    if(next>total){
-        next=0
+let next=0
+let timer = setInterval(slide,3000);
+function slide(n){
+    if(typeof(n)=="undefined"){
+        next=now+1;
+        if(next>=poAll){
+            next=0
+        }
+    }else{
+        next=n;
     }
+    let ani=$(".item").eq(now).data("ani");
     switch(ani){
         case 1:
-        $(".item").eq(now).$('img').fadeOut(1000,function(){
-            $(".item").eq(next).fadeIn(1000);
+        $(".item").eq(now).fadeOut(1500,function(){
+            $(".item").eq(next).fadeIn(1500);
         });
         break;
         case 2:
             $(".item").eq(now).hide(1000,function(){
-                $(".item").eq(next).show(1000);
+                $(".item").eq(next).show(1500);
             })
             break;
             case 3:
-                $(".item").eq(now).slideUp(1000,function(){
-                    $(".item").eq(next).slideDown(1000);
+                $(".item").eq(now).slideUp(1500,function(){
+                    $(".item").eq(next).slideDown(1500);
                 })
                 break;
     }
@@ -121,7 +128,7 @@ function slide(){
         let arrow=$(this).attr('class');
         switch(arrow){
             case "right":
-                if(p+1<=(total-4)){
+                if(p+1<=(poAll-4)){
                     p=p+1;
                 }
                 break;
@@ -132,6 +139,16 @@ function slide(){
                 break;
         }
         $('.btn').animate({right:90*p})
+    })
+    $(".btn").on('click',function(){
+        let idx=$(this).index()
+        slide(idx);
+    })
+    $('.btns').hover(function(){
+        clearInterval(timer)
+    },
+    function(){
+        timer=setInterval(slide,3000)
     })
 </script>
     <style>

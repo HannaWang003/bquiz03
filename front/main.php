@@ -2,11 +2,14 @@
   .lists{
     text-align:center;
     position:relative;
+    height:300px;
+    overflow:hidden;
   }
   .list{
     display:none;
     width:200px;
     margin:auto;
+    display:none;
   }
   .list *{
    box-sizing:border-box;
@@ -94,28 +97,32 @@ foreach($posters as $idx=>$poster){
   let total=$(".btn").length;
   //輪播
 let now=0;
-let timer = setInterval(()=>{slide()},3000);
-function slide(){
-  $('.list').hide();
-  let ani = $('.list').eq(now).data('ani');
-  let next = now++;
-  if(next>=total){
-    next=0;
+let next=0;
+let timer = setInterval(slide,3000);
+function slide(n){
+  if(typeof(n)=="undefined"){
+    next=now+1;
+    if(next>=total){
+      next=0
+    }
+  }else{
+    next=n;
   }
+  let ani = $('.list').eq(now).data('ani');
   switch(ani){
     case 1:
-      $('.list').eq(now).fadeOut(1000,function(){
-        $('.list').eq(next).fadeIn(1000)
+      $('.list').eq(now).fadeOut(1500,function(){
+        $('.list').eq(next).fadeIn(1500)
       })
       break;
       case 2:
-        $('.list').eq(now).hide(1000,function(){
-          $('.list').eq(next).show(1000)
+        $('.list').eq(now).hide(1500,function(){
+          $('.list').eq(next).show(1500)
         })
         break;
       case 3:
-        $('.list').eq(now).slideUp(1000,function(){
-          $('.list').eq(next).slideDown(1000)
+        $('.list').eq(now).slideUp(1500,function(){
+          $('.list').eq(next).slideDown(1500)
         })
         break;
   }
@@ -128,7 +135,6 @@ function slide(){
 
   //按鈕
   let p=0;
-  console.log(total)
   $(".left,.right").on('click',function(){
     let arrow = $(this).attr('class');
     switch(arrow){
@@ -144,6 +150,15 @@ function slide(){
           break;
     }
     $('.btn').animate({right:90*p});
+    $('.btn').on('click',function(){
+      let idx=$(this).index();
+      slide(idx);
+    })
+    $('.btns').hover(function(){
+      clearInterval(timer);
+    },function(){
+      timer=setInterval(slide,3000)
+    })
   })
 </script>
 

@@ -49,7 +49,7 @@ class DB{
         $sql=$this->sql_all($sql,$where,$other);
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
-    function cout($where='',$other=''){
+    function count($where='',$other=''){
         $sql="select count(*) from `$this->table` ";
         $sql=$this->sql_all($sql,$where,$other);
         return $this->pdo->query($sql)->fetchColumn();
@@ -101,5 +101,7 @@ class DB{
         return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }    
 }
-
+$Poster=new DB('poster');
+$Movie=new DB('movie');
+$Order=new DB('order');
 ?>

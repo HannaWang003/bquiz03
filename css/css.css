@@ -45,7 +45,7 @@ input:focus
 #main
 {
 	width:1022px;
-	min-height:766px;
+	height:790px;
 	border:#000 1px solid;
 	margin:30px auto 10px auto;
 }
@@ -139,7 +139,7 @@ input:focus
 	display:block;
 	margin-left:auto;
 	margin-right:auto;
-	min-height:360px;
+	height:400px;
 	padding:10px;
 }
 .ts

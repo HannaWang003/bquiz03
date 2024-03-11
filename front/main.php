@@ -210,7 +210,7 @@
           </div>
           <div class="ct">
             <input type="button" value="劇情簡介" style="font-size:14px;" onclick="location.href='?do=intro&id=<?= $movie['id'] ?>'">
-            <input type="button" value="線上訂票" style="font-size:14px;" onclick="location.href='?do=book&id=<?= $movie['id'] ?>'">
+            <input type="button" value="線上訂票" style="font-size:14px;" onclick="location.href='?do=order&id=<?= $movie['id'] ?>'">
           </div>
         </div>
       <?php

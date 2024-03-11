@@ -27,14 +27,35 @@
     </tr>
 </table>
 <script>
-    getmovie(<?= ($_GET['id']) ?? 0 ?>);
+    getmovie(<?= ($_GET['id']) ?? 0 ?>)
 
     function getmovie(id) {
-        $.get("./api/getmovie.php", {
+        $.get('./api/getmovie.php', {
             id
         }, function(res) {
-            // console.log(JSON.parse(res))
             $('#movie').html(res);
+            let movieId = $('#movie').val();
+            getdate(movieId);
+        })
+    }
+
+    function getdate(id) {
+        $.get('./api/getdate.php', {
+            id
+        }, function(res) {
+            $('#date').html(res);
+            let movie = $('#movie').val();
+            let date = $('#date').val();
+            getsess(movie, date);
+        })
+    }
+
+    function getsess(movie, date) {
+        $.get('./api/getsess.php', {
+            movie,
+            date
+        }, function(res) {
+            $('#sess').html(res);
         })
     }
 </script>

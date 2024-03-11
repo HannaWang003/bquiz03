@@ -34,8 +34,8 @@
             id
         }, function(res) {
             $('#movie').html(res);
-            let movieId = $('#movie').val();
-            getdate(movieId);
+            let id = $('#movie').val();
+            getdate(id);
         })
     }
 

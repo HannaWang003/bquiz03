@@ -22,8 +22,8 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button id="bookbtn">確定</button>
-                    <button id="resetbtn">重置</button>
+                    <input type="submit" value="確定">
+                    <input type="reset" value="重置">
                 </td>
                 <!-- <td></td> -->
             </tr>
@@ -40,13 +40,6 @@
     $('#date').on('change', function() {
         getsess($('#movie').val(), $('#date').val());
     })
-    //btn
-    $('#resetbtn').on('click', function() {
-        $('#movie').val("");
-        $('#date').val("");
-        $('#sess').val("");
-    })
-
     function getmovie(id) {
         $.get('./api/getmovie.php', {
             id

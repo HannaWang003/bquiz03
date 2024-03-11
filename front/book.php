@@ -56,7 +56,8 @@ foreach ($ords as $ord) {
             echo "<div> $col 排 $num 號</div>";
             $s = (in_array($i, $seats)) ? 3 : 2;
             echo "<div><img src='../icon/03D0{$s}.png'></div>";
-            echo "<input type='checkbox' name='chk' value='$i' class='chk'>";
+            $dis=(in_array($i, $seats))?"disabled":"";
+            echo "<input type='checkbox' name='chk' value='$i' class='chk' $dis>";
             echo "</div>";
         }
 

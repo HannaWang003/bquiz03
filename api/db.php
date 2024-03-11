@@ -17,8 +17,8 @@ class DB
 {
     //3 proteced
     protected $table;
-    // protected $dsn="mysql:host=localhost;charset=utf8;dbname=db03";
-    protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db20";
+    protected $dsn="mysql:host=localhost;charset=utf8;dbname=db03";
+    // protected $dsn = "mysql:host=localhost;charset=utf8;dbname=db20";
     protected $pdo;
     //construct
     function __construct($table)
@@ -116,7 +116,7 @@ class DB
 }
 $Poster = new DB('poster');
 $Movie = new DB('movie');
-$Order = new DB('orders');
+$Order = new DB('order');
 
 $sess = [
     "14:00~16:00",

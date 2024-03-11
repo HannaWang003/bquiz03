@@ -46,18 +46,6 @@
         $('#date').val("");
         $('#sess').val("");
     })
-    // $('#bookbtn').on('click', function() {
-    //     let movie = $('#movie').val();
-    //     let date = $('#date').val();
-    //     let sess = $('#sess').val();
-    //     $.post('./front/book.php', {
-    //         movie,
-    //         date,
-    //         sess
-    //     }, function(res) {
-    //         $('#book').html(res)
-    //     })
-    // })
 
     function getmovie(id) {
         $.get('./api/getmovie.php', {

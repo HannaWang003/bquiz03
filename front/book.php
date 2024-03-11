@@ -3,7 +3,7 @@ $movieName = $Movie->find($_POST['movie'])['text'];
 $date = $_POST['date'];
 $sess = $_POST['sess'];
 $ords = $Order->all([
-    'movie' => $movieName,
+    'text' => $movieName,
     'date' => $date,
     'session' => $sess
 ]);
@@ -77,7 +77,7 @@ foreach ($ords as $ord) {
 
     function order() {
         $.post('../api/checkout.php', {
-                movie: '<?= $movieName ?>',
+                text: '<?= $movieName ?>',
                 date: '<?= $date ?>',
                 session: '<?= $sess ?>',
                 qt: seats.length,

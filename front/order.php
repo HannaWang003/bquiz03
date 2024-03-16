@@ -1,48 +1,49 @@
-<style>
-    #room {
-        width: 540px;
-        height: 370px;
-        padding: 19px 112px 0px 112px;
-        background: red;
-        margin: auto;
-        background: url('./icon/03D04.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        box-sizing: border-box;
+<form action="?do=book" method="post">
+    <div>電影: <select name="movie" id="movie"></select></div>
+    <div>日期: <select name="date" id="date"></select></div>
+    <div>場次: <select name="sess" id="sess"></select></div>
+    <button>訂票</button>
+</form>
+<script>
+    //movie
+    getmovie(<?= ($_GET['id']) ?? 0 ?>);
+
+    function getmovie(id) {
+        $.post('./api/getmovie.php', {
+            id
+        }, function(res) {
+            $('#movie').html(res)
+            let id = $('#movie').val();
+            getdate(id)
+        })
     }
 
-    .seats {
-        display: flex;
-        flex-wrap: wrap;
+    function getdate(id) {
+        $.post('./api/getdate.php', {
+            id
+        }, function(res) {
+            $('#date').html(res)
+            let date = $('#date').val();
+            let id = $('#movie').val();
+            getsess(id, date)
+        })
     }
 
-    .seat {
-        width: 63px;
-        height: 85px;
-        /* background: red; */
-        position: relative;
+    function getsess(id, date) {
+        $.post('./api/getsess.php', {
+            id,
+            date
+        }, function(res) {
+            $('#sess').html(res)
+        })
     }
-
-    .seat input {
-        position: absolute;
-        bottom: 2px;
-        right: 2px;
-    }
-</style>
-<div id="room">
-    <div class="seats">
-        <?php
-        for ($i = 1; $i <= 20; $i++) {
-            $col = ceil($i / 5);
-            $num = ($i - 1) % 5 + 1;
-        ?>
-            <div class="seat">
-                <div><?= $col ?>排<?= $num ?>號</div>
-                <img src="./icon/03D02.png" alt="">
-                <input type="checkbox" name='seats[]' value="<?= $i ?>">
-            </div>
-        <?php
-        }
-        ?>
-    </div>
-</div>
+    $('#movie').on('change', function() {
+        let id = $(this).val()
+        getdate(id);
+    })
+    $('#date').on('change', function() {
+        let date = $(this).val();
+        let id = $('#movie').val();
+        getsess(id, date)
+    })
+</script>
